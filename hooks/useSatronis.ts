@@ -102,26 +102,6 @@ export function useSatronis(): UseSatronisReturn {
   }, [satronisService]);
 
   /**
-   * Clear processing result
-   */
-  const clearResult = useCallback(() => {
-    setResult(null);
-    setProcessingStatus(null);
-  }, []);
-
-  /**
-   * Clear error state
-   */
-  const clearError = useCallback(() => {
-    setError(null);
-  }, []);
-
-  /**
-   * Get SATRONIS capabilities
-   */
-  const getCapabilities = useCallback(() => {
-    return satronisService.getCapabilities();
-  }, [satronisService]);
 
   /**
    * Validate if file can be processed
@@ -132,18 +112,7 @@ export function useSatronis(): UseSatronisReturn {
     } catch (err) {
       return { 
         valid: false, 
-        reason: err instanceof Error ? err.message : 'Validation failed' 
-      };
-    }
-  }, [satronisService]);
 
-  return {
-    // State
-    isProcessing,
-    processingStatus,
-    result,
-    error,
-    
     // Actions
     processDocument,
     classifyDocument,
@@ -167,32 +136,10 @@ export function useSatronisStats() {
     mostCommonDocumentType: 'unknown' as DocumentType
   });
 
-  // In a real app, this would fetch from local storage or API
-  const updateStats = useCallback((result: ProcessingResult) => {
-    setStats(prevStats => ({
-      ...prevStats,
-      totalProcessed: prevStats.totalProcessed + 1,
-      averageProcessingTime: (prevStats.averageProcessingTime + result.processingTime) / 2
-    }));
-  }, []);
-
-  return { stats, updateStats };
+s };
 }
 
-/**
- * Hook for SATRONIS safety features
- */
-export function useSatronisSafety() {
-  const [safetyAlerts, setSafetyAlerts] = useState<string[]>([]);
-  
-  const checkSafety = useCallback((result: ProcessingResult) => {
-    const alerts: string[] = [];
-    
-    if (result.safetyCheck.requiresHumanReview) {
-      alerts.push('This document requires human medical review');
-    }
-    
-    if (result.confidence.overall < 0.7) {
+ence.overall < 0.7) {
       alerts.push('AI confidence is below recommended threshold');
     }
     
@@ -214,3 +161,80 @@ export function useSatronisSafety() {
     clearSafetyAlerts
   };
 }
+
+export function useSatronis(): UseSatronisReturn {
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [processingStatus, setProcessingStatus] = useState<ProcessingStatus | null>(null);
+  const [result, setResult] = useState<ProcessingResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  
+  const satronisService = useRef(new SatronisService()).current;
+
+  /**
+   * Process a medical document with SATRONIS
+   */
+  const processDocument = useCallback(async (
+    filePath: string, 
+    options?: Partial<ProcessingOptions>
+  ):
+
+  export function useSatronis(): UseSatronisReturn {
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [processingStatus, setProcessingStatus] = useState<ProcessingStatus | null>(null);
+  const [result, setResult] = useState<ProcessingResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  
+  const satronisService = useRef(new SatronisService()).current;
+
+  /**
+   * Process a medical document with SATRONIS
+   */
+  const processDocument = useCallback(async (
+    filePath: string, 
+    options?: Partial<ProcessingOptions>
+  ):
+  export function useSatronis(): UseSatronisReturn {
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [processingStatus, setProcessingStatus] = useState<ProcessingStatus | null>(null);
+  const [result, setResult] = useState<ProcessingResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  
+  const satronisService = useRef(new SatronisService()).current;
+
+  /**
+   * Process a medical document with SATRONIS
+   */
+  const processDocument = useCallback(async (
+    filePath: string, 
+    options?: Partial<ProcessingOptions>
+  ):
+  export function useSatronis(): UseSatronisReturn {
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [processingStatus, setProcessingStatus] = useState<ProcessingStatus | null>(null);
+  const [result, setResult] = useState<ProcessingResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  
+  const satronisService = useRef(new SatronisService()).current;
+
+  /**
+   * Process a medical document with SATRONIS
+   */
+  const processDocument = useCallback(async (
+    filePath: string, 
+    options?: Partial<ProcessingOptions>
+  ):
+  export function useSatronis(): UseSatronisReturn {
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [processingStatus, setProcessingStatus] = useState<ProcessingStatus | null>(null);
+  const [result, setResult] = useState<ProcessingResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  
+  const satronisService = useRef(new SatronisService()).current;
+
+  /**
+   * Process a medical document with SATRONIS
+   */
+  const processDocument = useCallback(async (
+    filePath: string, 
+    options?: Partial<ProcessingOptions>
+  ):
